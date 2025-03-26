@@ -17,8 +17,8 @@
   `((2 . sigint-cb)
     (3 . sigquit-cb)
     (15 . ,(if (uiop:getenv "WOO_CONVERT_SIGTERM_TO_SIGQUIT")
-               sigquit-cb
-               sigint-cb))))
+               'sigquit-cb
+               'sigint-cb))))
 
 (cffi:defcallback sigquit-cb :void ((evloop :pointer) (signal :pointer) (events :int))
   (declare (ignore signal events))
